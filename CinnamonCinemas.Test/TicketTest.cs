@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace CinnamonCinemas.Test
 {
-    public class TicketTest
+    public class TicketTests
     {
         
         Ticket ticket;

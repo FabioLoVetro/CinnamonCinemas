@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace CinnamonCinemas.Test
 {
-    public class ShowtimeTest
+    public class ShowtimeTests
     {
         Showtime showtime;
 
@@ -21,7 +21,7 @@ namespace CinnamonCinemas.Test
         }
 
         [Test]
-        public void Showtime()
+        public void ShowtimeTest()
         {
             showtime.Should().NotBeNull();
             showtime.Dates.Should().NotBeNull();
