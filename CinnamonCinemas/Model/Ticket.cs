@@ -7,57 +7,44 @@ namespace CinnamonCinemas.Model
 {
     public class Ticket
     {
+        private string _movie;
+        private DateOnly _date;
+        private TimeOnly _time;
+        private string _seat;
 
         /// <summary>
-        /// Constructor
+        /// The movie
         /// </summary>
-        public Ticket()
+        public string Movie
         {
-            throw new System.NotImplementedException();
+            get => this._movie;
+            set => this._movie = value;
         }
-
-        /// <summary>
-        /// The cinema
-        /// </summary>
-        private string _movie
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
         /// <summary>
         /// The time
         /// </summary>
-        private TimeOnly _time
+        public TimeOnly Time
         {
-            get => default;
-            set
-            {
-            }
+            get => this._time;
+            set => this._time = value;
         }
 
         /// <summary>
         /// The date
         /// </summary>
-        private DateOnly _date
+        public DateOnly Date
         {
-            get => default;
-            set
-            {
-            }
+            get => this._date;
+            set => this._date = value;
         }
 
         /// <summary>
         /// The seat
         /// </summary>
-        private string _seat
+        public string Seat
         {
-            get => default;
-            set
-            {
-            }
+            get => this._seat;
+            set => this._seat = value;
         }
     }
 }
