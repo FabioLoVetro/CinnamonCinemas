@@ -2,11 +2,12 @@ using CinnamonCinemas.Model;
 using CinnamonCinemas.Persistence;
 using FluentAssertions;
 using NUnit.Framework;
+using System.Linq;
 using System.Net.Sockets;
 
 namespace CinnamonCinemas.Test
 {
-    public class Test
+    public class BookingTests
     {
         
         Booking booking;
@@ -36,13 +37,11 @@ namespace CinnamonCinemas.Test
         }
 
         [Test]
-        public void Test()
+        public void TicketListTest()
         {
-        }
-
-        [Test]
-        public void Test()
-        {
+            booking.TicketList.Count.Should().Be(2);
+            booking.TicketList[0].Movie.Should().Be("Matrix");
+            booking.TicketList[1].Movie.Should().Be("Arrows");
         }
     }
 }
