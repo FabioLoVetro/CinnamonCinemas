@@ -8,23 +8,22 @@ namespace CinnamonCinemas.Persistence
 {
     public class Booking
     {
+        private List<Ticket> _ticketList;
         /// <summary>
         /// Constructor
         /// </summary>
         public Booking()
         {
-            throw new System.NotImplementedException();
+            this._ticketList = new List<Ticket>();
         }
 
         /// <summary>
-        /// The reservations
+        /// The reservations list
         /// </summary>
-        private List<Ticket> _ticketList
+        public List<Ticket> TicketList
         {
-            get => default;
-            set
-            {
-            }
+            get => this._ticketList;
+            set => this._ticketList = value;
         }
     }
 }
