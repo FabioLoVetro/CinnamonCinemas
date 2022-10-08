@@ -18,6 +18,8 @@ namespace CinnamonCinemas.Function
         /// <param name="booking">The booking</param>
         public bool AreSpecificSeatsAvailableForMovie(string movie, DateTime datetime, string[] seats, Booking booking)
         {
+            if (this.AllAvailabilityForMovie(movie, booking) == null) { return false; }
+
             string[] seatsArray = this.AllAvailabilityForMovie(movie, booking)[datetime].Split(' ');
 
             if (seats.Except(seatsArray).Count() == 0)
@@ -27,13 +29,17 @@ namespace CinnamonCinemas.Function
         }
 
         /// <summary>
-        /// Given a movie, returns seats available for date and time
+        /// Given a movie, returns seats available for date and time.
+        /// null, if the movie is not valid
         /// </summary>
         /// <param name="movie">The movie</param>
         /// <param name="booking">The booking</param>
         public Dictionary<DateTime, string> AllAvailabilityForMovie(string movie, Booking booking)
         {
+            if (this.SeatsAllocatedForMovie(movie, booking)==null) { return null; }
+
             Dictionary<DateTime, string> result = new Dictionary<DateTime, string>();
+
             foreach (DateTime datetime in this.SeatsAllocatedForMovie(movie, booking).Keys)
             {
                 string[] allSeats = booking.Seats;
@@ -52,30 +58,55 @@ namespace CinnamonCinemas.Function
         /// <param name="booking">The booking</param>
         public bool EnoughSeatsAvailable(string movie, DateTime dateTime, int numberOfSeats, Booking booking)
         {
+            if (this.AllAvailabilityForMovie(movie, booking) == null) { return false; }
             string[] seatsArray = this.AllAvailabilityForMovie(movie, booking)[dateTime].Split(' ');
             return (seatsArray.Length >= numberOfSeats);
         }
 
         /// <summary>
         /// Given a movie, returns seats allocated for date and time
+        /// null, if the movie is not valid
         /// </summary>
         /// <param name="movie">The movie</param>
         /// <param name="booking">The booking</param>
         public Dictionary<DateTime, string> SeatsAllocatedForMovie(string movie, Booking booking)
         {
+            if (!this.IsMovieAvailable(movie, booking)) { return null; }
+
             Dictionary<DateTime, string> result = new Dictionary<DateTime, string>();
 
+            foreach (Showtime showTime in booking.ShowTimeList)
+                if (showTime.Movie == movie)
+                    foreach (DateTime dateTime in showTime.Dates)
+                        result.Add(dateTime, "");
+            
             foreach (Ticket t in booking.TicketList)
             {
                 if (t.Movie == movie)
                 {
                     if (result.ContainsKey(t.DateTime()))
-                        result[t.DateTime()] = string.Concat(result[t.DateTime()], $" {t.Seat}");
+                        result[t.DateTime()] = string.Join(' ',result[t.DateTime()], t.Seat).Trim();
                     else
                         result.Add(t.DateTime(), t.Seat);
                 }
             }
+            
             return result;
+        }
+
+        /// <summary>
+        /// Given a movie and a datetime, check if the movie is available
+        /// </summary>
+        /// <param name="movie">The movie</param>
+        /// <param name="booking">The booking</param>
+        public bool IsMovieAvailable(string movie, Booking booking)
+        {
+            foreach (Showtime showtime in booking.ShowTimeList)
+            {
+                if (showtime.Movie == movie)
+                    return true;
+            }
+            return false;
         }
     }
 }
