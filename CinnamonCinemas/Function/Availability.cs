@@ -20,11 +20,6 @@ namespace CinnamonCinemas.Function
         {
             string[] seatsArray = this.AllAvailabilityForMovie(movie, booking)[datetime].Split(' ');
 
-            Console.WriteLine(datetime+" datetime");   
-            Console.WriteLine(seats.Except(seatsArray).Count());
-            Console.WriteLine(string.Join(' ',seatsArray));
-            Console.WriteLine(string.Join(' ',seats.Except(seatsArray)));
-
             if (seats.Except(seatsArray).Count() == 0)
                 return true;
             else
@@ -66,7 +61,7 @@ namespace CinnamonCinemas.Function
         /// </summary>
         /// <param name="movie">The movie</param>
         /// <param name="booking">The booking</param>
-        private Dictionary<DateTime, string> SeatsAllocatedForMovie(string movie, Booking booking)
+        public Dictionary<DateTime, string> SeatsAllocatedForMovie(string movie, Booking booking)
         {
             Dictionary<DateTime, string> result = new Dictionary<DateTime, string>();
 
