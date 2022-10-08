@@ -13,6 +13,7 @@ namespace CinnamonCinemas.Persistence
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="cinema">The cinema</param>
         public Booking(Cinema cinema)
         {
             this._seats = cinema.Seats;
