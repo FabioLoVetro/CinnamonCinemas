@@ -88,5 +88,13 @@ namespace CinnamonCinemas.Test
             availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 7, booking).Should().BeTrue();
             availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 14, booking).Should().BeFalse();
         }
+
+        [Test]
+        public void SeatsAllocatedForMovieTest()
+        {
+            availability.SeatsAllocatedForMovie("Matrix", booking)[new DateTime(2022, 10, 20, 15, 00, 00)].Should().Be("A4 A5 B1");
+
+            availability.SeatsAllocatedForMovie("Arrows", booking)[new DateTime(2022, 10, 25, 19, 00, 00)].Should().Be("A3 B3 C3");
+        }
     }
 }
