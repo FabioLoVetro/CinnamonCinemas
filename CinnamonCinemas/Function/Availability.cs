@@ -25,9 +25,12 @@ namespace CinnamonCinemas.Function
         /// </summary>
         /// <param name="movie">the movie</param>
         /// <param name="booking">the booking</param>
-        public System.Collections.Generic.Dictionary<System.DateTime, string> AllAvailabilityForMovie(string movie, Booking booking)
+        public Dictionary<DateTime, string> AllAvailabilityForMovie(string movie, Booking booking)
         {
-            throw new System.NotImplementedException();
+            Dictionary<DateTime, string> result = new Dictionary<DateTime, string>();
+
+            
+            return result;
         }
 
         /// <summary>
@@ -39,6 +42,28 @@ namespace CinnamonCinemas.Function
         public bool EnoughSeatsAvailable(string movie, DateTime dateTime, int numberOfSeats)
         {
             throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Given a movie, returns seats allocated for date and time
+        /// </summary>
+        /// <param name="movie">the movie</param>
+        /// <param name="booking">the booking</param>
+        private Dictionary<DateTime, string> SeatsAllocatedForMovie(string movie, Booking booking)
+        {
+            Dictionary<DateTime, string> result = new Dictionary<DateTime, string>();
+
+            foreach (Ticket t in booking.TicketList)
+            {
+                if (t.Movie == movie)
+                {
+                    if (result.ContainsKey(t.DateTime()))
+                        result[t.DateTime()] = string.Concat(result[t.DateTime()], $" {t.Seat}");
+                    else
+                        result.Add(t.DateTime(), t.Seat);
+                }
+            }
+            return result;
         }
     }
 }
