@@ -8,6 +8,7 @@ namespace CinnamonCinemas.Persistence
 {
     public class Booking
     {
+        private readonly List<Showtime> _showTimeList;
         private readonly string[] _seats;
         private List<Ticket> _ticketList;
         /// <summary>
@@ -16,6 +17,7 @@ namespace CinnamonCinemas.Persistence
         /// <param name="cinema">The cinema</param>
         public Booking(Cinema cinema)
         {
+            this._showTimeList = cinema.ShowTimeList;
             this._seats = cinema.Seats;
             this._ticketList = new List<Ticket>();
         }
@@ -35,6 +37,14 @@ namespace CinnamonCinemas.Persistence
         public string[] Seats
         {
             get => this._seats;
+        }
+
+        /// <summary>
+        /// The show time list
+        /// </summary>
+        public List<Showtime> ShowTimeList
+        {
+            get => this._showTimeList;
         }
     }
 }
