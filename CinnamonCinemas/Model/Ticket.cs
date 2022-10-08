@@ -11,7 +11,6 @@ namespace CinnamonCinemas.Model
         private DateOnly _date;
         private TimeOnly _time;
         private string _seat;
-        private DateTime _dateTime;
 
         /// <summary>
         /// The movie
@@ -55,6 +54,11 @@ namespace CinnamonCinemas.Model
         {
             get => this._seat;
             set => this._seat = value;
+        }
+        override
+        public string ToString()
+        {
+            return $"{this._movie} {this.DateTime()} {this._seat}";
         }
     }
 }
