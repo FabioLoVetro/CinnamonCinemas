@@ -11,6 +11,7 @@ namespace CinnamonCinemas.Model
         private DateOnly _date;
         private TimeOnly _time;
         private string _seat;
+        private DateTime _dateTime;
 
         /// <summary>
         /// The movie
@@ -36,6 +37,15 @@ namespace CinnamonCinemas.Model
         {
             get => this._date;
             set => this._date = value;
+        }
+
+        /// <summary>
+        /// The date time
+        /// </summary>
+        public DateTime DateTime()
+        {
+            return new DateTime(this._date.Year, this._date.Month, this._date.Day,
+                                this._time.Hour, this._time.Minute, this._time.Second);
         }
 
         /// <summary>
