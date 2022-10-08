@@ -3,26 +3,26 @@
   <Class Name="CinnamonCinemas.Model.Ticket">
     <Position X="8.75" Y="4.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgEAAABAAASAAAAAAAAAABAAACAAAAAQA=</HashCode>
+      <HashCode>AAAAAAAAAAAgEAAEBAAASAAAAAAAAAQBAAACAAAAAQA=</HashCode>
       <FileName>Model\Ticket.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CinnamonCinemas.Function.Availability">
-    <Position X="5.25" Y="0.5" Width="6" />
+    <Position X="4.5" Y="0.5" Width="6.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAABACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAABACAABACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Function\Availability.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CinnamonCinemas.Function.BuyTickets">
-    <Position X="5.25" Y="2.5" Width="4.5" />
+    <Position X="5.25" Y="2.5" Width="5.25" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Function\BuyTickets.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CinnamonCinemas.Model.Cinema">
-    <Position X="1" Y="0.5" Width="3" />
+    <Position X="1" Y="0.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAACAAAACAAAAAAAAAEAAEAAQE=</HashCode>
       <FileName>Model\Cinema.cs</FileName>
@@ -32,21 +32,21 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="CinnamonCinemas.Model.Showtime">
-    <Position X="1" Y="4.5" Width="2.75" />
+    <Position X="1" Y="4.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAEAAABAAAAAAAAAAAAAAAAAACAAACAAA=</HashCode>
       <FileName>Model\Showtime.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CinnamonCinemas.Persistence.Booking">
-    <Position X="4.5" Y="4.5" Width="1.5" />
+    <Position X="4.5" Y="4.5" Width="2" />
     <AssociationLine Name="TicketList" Type="CinnamonCinemas.Model.Ticket">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.11" Y="0.094" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAQAABgAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Persistence\Booking.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
