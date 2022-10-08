@@ -14,7 +14,7 @@ namespace CinnamonCinemas.Test
         [SetUp]
         public void Setup()
         {
-            booking = new Booking();
+            booking = new Booking(new Cinema());
             Ticket matrix = new Ticket();
             matrix.Movie = "Matrix";
             matrix.Date = new DateOnly(2022, 10, 20);
