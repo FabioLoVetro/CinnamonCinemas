@@ -69,24 +69,24 @@ namespace CinnamonCinemas.Test
         public void AreSpecificSeatsAvailableForMovieTest()
         {
             string[] seatsAvailableForMatrix = { "A1", "B4", "C2" };
-            string[] seatsNotAvailableForMatrix = { "A1", "B4", "C2" };
+            string[] seatsNotAvailableForMatrix = { "A1", "A4", "C2" };
             string[] seatsAvailableForArrows = { "B4", "B5", "C1" };
             string[] seatsNotAvailableForArrows = { "C1", "C2", "C3" };
-            availability.AreSpecificSeatsAvailableForMovie("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), seatsAvailableForMatrix).Should().BeTrue();
-            availability.AreSpecificSeatsAvailableForMovie("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), seatsNotAvailableForMatrix).Should().BeFalse();
-            availability.AreSpecificSeatsAvailableForMovie("Arrows", new DateTime(2022, 10, 20, 15, 00, 00), seatsAvailableForArrows).Should().BeTrue();
-            availability.AreSpecificSeatsAvailableForMovie("Arrows", new DateTime(2022, 10, 20, 15, 00, 00), seatsNotAvailableForArrows).Should().BeFalse();
+            availability.AreSpecificSeatsAvailableForMovie("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), seatsAvailableForMatrix, booking).Should().BeTrue();
+            availability.AreSpecificSeatsAvailableForMovie("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), seatsNotAvailableForMatrix, booking).Should().BeFalse();
+            availability.AreSpecificSeatsAvailableForMovie("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), seatsAvailableForArrows, booking).Should().BeTrue();
+            availability.AreSpecificSeatsAvailableForMovie("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), seatsNotAvailableForArrows, booking).Should().BeFalse();
         }
 
         [Test]
         public void EnoughSeatsAvailableTest()
         {
-            availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00),5).Should().BeTrue();
-            availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), 10).Should().BeTrue();
-            availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), 13).Should().BeFalse();
-            availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 20, 19, 00, 00), 2).Should().BeTrue();
-            availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 20, 19, 00, 00), 7).Should().BeTrue();
-            availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 20, 19, 00, 00), 14).Should().BeFalse();
+            availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00),5, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), 10, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), 13, booking).Should().BeFalse();
+            availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 2, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 7, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 14, booking).Should().BeFalse();
         }
     }
 }
