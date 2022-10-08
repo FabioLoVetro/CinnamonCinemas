@@ -28,8 +28,12 @@ namespace CinnamonCinemas.Function
         public Dictionary<DateTime, string> AllAvailabilityForMovie(string movie, Booking booking)
         {
             Dictionary<DateTime, string> result = new Dictionary<DateTime, string>();
-
-            
+            foreach (DateTime datetime in this.SeatsAllocatedForMovie(movie, booking).Keys)
+            {
+                string[] allSeats = booking.Seats;
+                string[] seatsAllocated = this.SeatsAllocatedForMovie(movie, booking)[datetime].Split(' ');
+                result.Add(datetime,string.Join(' ',allSeats.Except(seatsAllocated)));
+            }
             return result;
         }
 
