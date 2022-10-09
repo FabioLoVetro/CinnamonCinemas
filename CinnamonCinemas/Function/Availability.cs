@@ -109,5 +109,19 @@ namespace CinnamonCinemas.Function
             }
             return false;
         }
+        /// <summary>
+        /// Return a string that rapresents all the availability and all the seats allocated
+        /// </summary>
+        /// <returns></returns>
+        public string ToString(string movie, Booking booking)
+        {
+            string allocatedSeats = $"Seats sold for: {movie}\n";
+            foreach (DateTime datetime in this.SeatsAllocatedForMovie(movie, booking).Keys.ToList())
+            {
+                allocatedSeats += $" - {datetime.ToString("yyyy-MM-dd HH:mm")}";
+                allocatedSeats += $" - {this.SeatsAllocatedForMovie(movie, booking)[datetime]}\n";
+            }
+            return allocatedSeats;
+        }
     }
 }
