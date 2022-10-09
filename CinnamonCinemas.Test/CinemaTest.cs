@@ -64,7 +64,7 @@ namespace CinnamonCinemas.Test
         [Test]
         public void CinemaNameTest()
         {
-            cinema.CinemaName.Should().Be("Cinnamon Cinemas");
+            cinema.CinemaName.Should().Be("Cinnamon Cinemas Movie Theatre");
         }
 
         [Test]
