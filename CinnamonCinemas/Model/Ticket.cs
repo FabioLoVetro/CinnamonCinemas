@@ -8,8 +8,7 @@ namespace CinnamonCinemas.Model
     public class Ticket
     {
         private string _movie;
-        private DateOnly _date;
-        private TimeOnly _time;
+        private DateTime _dateTime;
         private string _seat;
 
         /// <summary>
@@ -20,31 +19,15 @@ namespace CinnamonCinemas.Model
             get => this._movie;
             set => this._movie = value;
         }
-        /// <summary>
-        /// The time
-        /// </summary>
-        public TimeOnly Time
-        {
-            get => this._time;
-            set => this._time = value;
-        }
+
 
         /// <summary>
         /// The date
         /// </summary>
-        public DateOnly Date
+        public DateTime DateTime
         {
-            get => this._date;
-            set => this._date = value;
-        }
-
-        /// <summary>
-        /// The date time
-        /// </summary>
-        public DateTime DateTime()
-        {
-            return new DateTime(this._date.Year, this._date.Month, this._date.Day,
-                                this._time.Hour, this._time.Minute, this._time.Second);
+            get => this._dateTime;
+            set => this._dateTime = value;
         }
 
         /// <summary>
@@ -58,7 +41,27 @@ namespace CinnamonCinemas.Model
         override
         public string ToString()
         {
-            return $"{this._movie} {this.DateTime()} {this._seat}";
+            return $"{this._movie} {this._dateTime} {this._seat}";
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="movie">The movie</param>
+        /// <param name="dateTime">Date and time of the movie</param>
+        /// <param name="seat">seat reserved</param>
+        public Ticket(string movie, DateTime dateTime, string seat)
+        {
+            this._movie = movie;
+            this._dateTime = dateTime;
+            this._seat = seat;
+        }
+
+        /// <summary>
+        /// Constructor no args
+        /// </summary>
+        public Ticket()
+        {
         }
     }
 }
