@@ -72,11 +72,11 @@ The program will guides the user asking the information what it needs:
 
 EX:
 
-1	(by user)
+1															(by user)
 Option 1: what movie would you like watch? (Matrix)
-Matrix
+Matrix														(by user)
 Choose date and time of the show: (Ex: 2022-10-20 15:00)
-2022-10-20 15:00
+2022-10-20 15:00											(by user)
 -------------------------------------------------------------------------------------------------------------------------------
 When all the information are inputted, the program will respond with an info about the result of the operation:
 
