@@ -70,7 +70,7 @@ Please choose an option:
 At this point the user need to digit some information to buy the ticket!
 The program will guides the user asking the information what it needs:
 
-EX:
+Example:
 
 by user:		1
 by program:		Option 1: what movie would you like watch? (Matrix)
@@ -80,13 +80,13 @@ by user:		2022-10-20 15:00
 -------------------------------------------------------------------------------------------------------------------------------
 When all the information are inputted, the program will respond with an info about the result of the operation:
 
-EX:
+Example:
 
 Well done! you bought the tickets. Thank you!
 -------------------------------------------------------------------------------------------------------------------------------
 And it will update all the information
 
-EX:
+Example:
 
 Seats sold for: Cars
  - 2022-10-03 15:00 - A1 A2
