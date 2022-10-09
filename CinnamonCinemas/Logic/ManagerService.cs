@@ -17,6 +17,9 @@ namespace CinnamonCinemas.Logic
         BuyTickets buyTickets;
         Availability availability;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ManagerService()
         {
             cinema = new Cinema();
@@ -26,6 +29,9 @@ namespace CinnamonCinemas.Logic
             this.inizialization();
             this.Start();
         }
+        /// <summary>
+        /// Inizialization 
+        /// </summary>
         public void inizialization()
         {
             Showtime matrix = new Showtime();
@@ -62,6 +68,9 @@ namespace CinnamonCinemas.Logic
             cinema.ShowTimeList.Add(cars);
             cinema.ShowTimeList.Add(star_wars);
         }
+        /// <summary>
+        /// Start
+        /// </summary>
         public void Start()
         {
             Console.WriteLine("Welcome to Cinnamon Cinema Movie Theatre");
