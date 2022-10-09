@@ -20,7 +20,7 @@ namespace CinnamonCinemas.Function
         {
             if (this.AllAvailabilityForMovie(movie, booking) == null) { return false; }
 
-            string[] seatsArray = this.AllAvailabilityForMovie(movie, booking)[datetime].Split(' ');
+            string[] seatsArray = this.AllAvailabilityForMovie(movie, booking)[datetime].Trim().Split(' ');
 
             if (seats.Except(seatsArray).Count() == 0)
                 return true;
@@ -43,8 +43,8 @@ namespace CinnamonCinemas.Function
             foreach (DateTime datetime in this.SeatsAllocatedForMovie(movie, booking).Keys)
             {
                 string[] allSeats = booking.Seats;
-                string[] seatsAllocated = this.SeatsAllocatedForMovie(movie, booking)[datetime].Split(' ');
-                result.Add(datetime, string.Join(' ', allSeats.Except(seatsAllocated)));
+                string[] seatsAllocated = this.SeatsAllocatedForMovie(movie, booking)[datetime].Trim().Split(' ');
+                result.Add(datetime, string.Join(' ', allSeats.Except(seatsAllocated)).Trim());
             }
             return result;
         }
@@ -58,8 +58,9 @@ namespace CinnamonCinemas.Function
         /// <param name="booking">The booking</param>
         public bool EnoughSeatsAvailable(string movie, DateTime dateTime, int numberOfSeats, Booking booking)
         {
-            if (this.AllAvailabilityForMovie(movie, booking) == null) { return false; }
-            string[] seatsArray = this.AllAvailabilityForMovie(movie, booking)[dateTime].Split(' ');
+            if (this.AllAvailabilityForMovie(movie, booking) == null) return false;
+            string[] seatsArray = this.AllAvailabilityForMovie(movie, booking)[dateTime].Trim().Split(' ');
+            if (seatsArray.Length == 1 && seatsArray[0] == "") return false;
             return (seatsArray.Length >= numberOfSeats);
         }
 
@@ -84,10 +85,10 @@ namespace CinnamonCinemas.Function
             {
                 if (t.Movie == movie)
                 {
-                    if (result.ContainsKey(t.DateTime()))
-                        result[t.DateTime()] = string.Join(' ',result[t.DateTime()], t.Seat).Trim();
+                    if (result.ContainsKey(t.DateTime))
+                        result[t.DateTime] = string.Join(' ',result[t.DateTime], t.Seat).Trim();
                     else
-                        result.Add(t.DateTime(), t.Seat);
+                        result.Add(t.DateTime, t.Seat);
                 }
             }
             
