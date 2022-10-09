@@ -53,33 +53,27 @@ namespace CinnamonCinemas.Test
             cinema.ShowTimeList.Add(star_wars);
             Ticket matrix1 = new Ticket();
             matrix1.Movie = "Matrix";
-            matrix1.Date = new DateOnly(2022, 10, 20);
-            matrix1.Time = new TimeOnly(15, 00);
+            matrix1.DateTime = new DateTime(2022, 10, 20, 15, 00, 00);
             matrix1.Seat = "A4";
             Ticket matrix2 = new Ticket();
             matrix2.Movie = "Matrix";
-            matrix2.Date = new DateOnly(2022, 10, 20);
-            matrix2.Time = new TimeOnly(15, 00);
+            matrix2.DateTime = new DateTime(2022, 10, 20, 15, 00, 00);
             matrix2.Seat = "A5";
             Ticket matrix3 = new Ticket();
             matrix3.Movie = "Matrix";
-            matrix3.Date = new DateOnly(2022, 10, 20);
-            matrix3.Time = new TimeOnly(15, 00);
+            matrix3.DateTime = new DateTime(2022, 10, 20, 15, 00, 00);
             matrix3.Seat = "B1";
             Ticket arrows1 = new Ticket();
             arrows1.Movie = "Arrows";
-            arrows1.Date = new DateOnly(2022, 10, 25);
-            arrows1.Time = new TimeOnly(19, 00);
+            arrows1.DateTime = new DateTime(2022, 10, 25, 19, 00, 00);
             arrows1.Seat = "A3";
             Ticket arrows2 = new Ticket();
             arrows2.Movie = "Arrows";
-            arrows2.Date = new DateOnly(2022, 10, 25);
-            arrows2.Time = new TimeOnly(19, 00);
+            arrows2.DateTime = new DateTime(2022, 10, 25, 19, 00, 00);
             arrows2.Seat = "B3";
             Ticket arrows3 = new Ticket();
             arrows3.Movie = "Arrows";
-            arrows3.Date = new DateOnly(2022, 10, 25);
-            arrows3.Time = new TimeOnly(19, 00);
+            arrows3.DateTime = new DateTime(2022, 10, 25, 19, 00, 00);
             arrows3.Seat = "C3";
             booking.TicketList.Add(matrix1);
             booking.TicketList.Add(matrix2);
@@ -127,6 +121,19 @@ namespace CinnamonCinemas.Test
             availability.AllAvailabilityForMovie("Arrows", booking)[availability.AllAvailabilityForMovie("Arrows", booking).Keys.ToList()[3]].Should().Be("A1 A2 A3 A4 A5 B1 B2 B3 B4 B5 C1 C2 C3 C4 C5");
             availability.AllAvailabilityForMovie("Arrows", booking)[availability.AllAvailabilityForMovie("Arrows", booking).Keys.ToList()[4]].Should().Be("A1 A2 A3 A4 A5 B1 B2 B3 B4 B5 C1 C2 C3 C4 C5");
             availability.AllAvailabilityForMovie("Arrows", booking)[availability.AllAvailabilityForMovie("Arrows", booking).Keys.ToList()[5]].Should().Be("A1 A2 A4 A5 B1 B2 B4 B5 C1 C2 C4 C5");
+
+            availability.AllAvailabilityForMovie("Cars", booking).Count().Should().Be(2);
+            availability.AllAvailabilityForMovie("Cars", booking).Keys.ToList()[0].ToString().Should().Be("03/10/2022 15:00:00");
+            availability.AllAvailabilityForMovie("Cars", booking).Keys.ToList()[1].ToString().Should().Be("03/10/2022 17:00:00");
+            availability.AllAvailabilityForMovie("Cars", booking)[availability.AllAvailabilityForMovie("Cars", booking).Keys.ToList()[0]].Should().Be("A1 A2 A3 A4 A5 B1 B2 B3 B4 B5 C1 C2 C3 C4 C5");
+            availability.AllAvailabilityForMovie("Cars", booking)[availability.AllAvailabilityForMovie("Cars", booking).Keys.ToList()[1]].Should().Be("A1 A2 A3 A4 A5 B1 B2 B3 B4 B5 C1 C2 C3 C4 C5");
+            
+            availability.AllAvailabilityForMovie("Star wars", booking).Count().Should().Be(3);
+            availability.AllAvailabilityForMovie("Star wars", booking).Keys.ToList()[0].ToString().Should().Be("03/10/2022 19:00:00");
+            availability.AllAvailabilityForMovie("Star wars", booking).Keys.ToList()[1].ToString().Should().Be("03/10/2022 21:00:00");
+            availability.AllAvailabilityForMovie("Star wars", booking).Keys.ToList()[2].ToString().Should().Be("03/10/2022 23:00:00");
+            availability.AllAvailabilityForMovie("Star wars", booking)[availability.AllAvailabilityForMovie("Star wars", booking).Keys.ToList()[0]].Should().Be("A1 A2 A3 A4 A5 B1 B2 B3 B4 B5 C1 C2 C3 C4 C5");
+            availability.AllAvailabilityForMovie("Star wars", booking)[availability.AllAvailabilityForMovie("Star wars", booking).Keys.ToList()[1]].Should().Be("A1 A2 A3 A4 A5 B1 B2 B3 B4 B5 C1 C2 C3 C4 C5");
         }
 
         [Test]
@@ -147,10 +154,27 @@ namespace CinnamonCinemas.Test
         {
             availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00),5, booking).Should().BeTrue();
             availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), 10, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), 12, booking).Should().BeTrue();
             availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), 13, booking).Should().BeFalse();
+            availability.EnoughSeatsAvailable("Matrix", new DateTime(2022, 10, 20, 15, 00, 00), 14, booking).Should().BeFalse();
+
             availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 2, booking).Should().BeTrue();
             availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 7, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 12, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 13, booking).Should().BeFalse();
             availability.EnoughSeatsAvailable("Arrows", new DateTime(2022, 10, 25, 19, 00, 00), 14, booking).Should().BeFalse();
+
+            availability.EnoughSeatsAvailable("Cars", new DateTime(2022, 10, 03, 15, 00, 00), 15, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Cars", new DateTime(2022, 10, 03, 15, 00, 00), 16, booking).Should().BeFalse();
+            availability.EnoughSeatsAvailable("Cars", new DateTime(2022, 10, 03, 17, 00, 00), 15, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Cars", new DateTime(2022, 10, 03, 17, 00, 00), 16, booking).Should().BeFalse();
+
+            availability.EnoughSeatsAvailable("Star wars", new DateTime(2022, 10, 03, 19, 00, 00), 15, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Star wars", new DateTime(2022, 10, 03, 19, 00, 00), 16, booking).Should().BeFalse();
+            availability.EnoughSeatsAvailable("Star wars", new DateTime(2022, 10, 03, 21, 00, 00), 15, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Star wars", new DateTime(2022, 10, 03, 21, 00, 00), 16, booking).Should().BeFalse();
+            availability.EnoughSeatsAvailable("Star wars", new DateTime(2022, 10, 03, 23, 00, 00), 15, booking).Should().BeTrue();
+            availability.EnoughSeatsAvailable("Star wars", new DateTime(2022, 10, 03, 23, 00, 00), 16, booking).Should().BeFalse();
         }
 
         [Test]
@@ -160,17 +184,33 @@ namespace CinnamonCinemas.Test
 
             availability.SeatsAllocatedForMovie("Arrows", booking)[new DateTime(2022, 10, 25, 19, 00, 00)].Should().Be("A3 B3 C3");
 
+            availability.SeatsAllocatedForMovie("Cars", booking)[new DateTime(2022, 10, 03, 15, 00, 00)].Should().Be("");
+            availability.SeatsAllocatedForMovie("Cars", booking)[new DateTime(2022, 10, 03, 17, 00, 00)].Should().Be("");
+
+            availability.SeatsAllocatedForMovie("Star wars", booking)[new DateTime(2022, 10, 03, 19, 00, 00)].Should().Be("");
+            availability.SeatsAllocatedForMovie("Star wars", booking)[new DateTime(2022, 10, 03, 21, 00, 00)].Should().Be("");
+            availability.SeatsAllocatedForMovie("Star wars", booking)[new DateTime(2022, 10, 03, 23, 00, 00)].Should().Be("");
+
             availability.SeatsAllocatedForMovie("Avatar", booking).Should().BeNull();
+            availability.SeatsAllocatedForMovie("Resident Evil", booking).Should().BeNull();
         }
 
         [Test]
         public void IsMovieAvailableTest()
         {
             availability.IsMovieAvailable("Matrix", booking).Should().BeTrue();
+            availability.IsMovieAvailable("Matri", booking).Should().BeFalse();
 
             availability.IsMovieAvailable("Arrows", booking).Should().BeTrue();
+            availability.IsMovieAvailable("arrows", booking).Should().BeFalse();
 
             availability.IsMovieAvailable("Avatar", booking).Should().BeFalse();
+
+            availability.IsMovieAvailable("Cars", booking).Should().BeTrue();
+
+            availability.IsMovieAvailable("Star wars", booking).Should().BeTrue();
+
+            availability.IsMovieAvailable("Resident Evil", booking).Should().BeFalse();
         }
         
     }
