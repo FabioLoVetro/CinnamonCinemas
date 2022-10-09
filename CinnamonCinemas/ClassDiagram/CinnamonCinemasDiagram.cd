@@ -10,12 +10,12 @@
   <Class Name="CinnamonCinemas.Function.Availability">
     <Position X="4.25" Y="0.5" Width="6.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAABACAABACAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAABACAABECAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Function\Availability.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CinnamonCinemas.Function.BuyTickets">
-    <Position X="5.25" Y="2.5" Width="5.25" />
+    <Position X="5" Y="2.75" Width="5.25" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAAAAAAAAAAAACAQAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Function\BuyTickets.cs</FileName>
@@ -24,7 +24,7 @@
   <Class Name="CinnamonCinemas.Model.Cinema">
     <Position X="1" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAgAACAAAACAAAAAAAAAEAAEAAQE=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAgAACAAAECAAAAAAAAAEAAGAAQE=</HashCode>
       <FileName>Model\Cinema.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -34,7 +34,7 @@
   <Class Name="CinnamonCinemas.Model.Showtime">
     <Position X="1" Y="4.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAABAAAAAAAAAAAAAAAAAACAAACAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAEAAEBAAAAAAAAAAAAAAAAAACAAACAAA=</HashCode>
       <FileName>Model\Showtime.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -56,7 +56,7 @@
   <Class Name="CinnamonCinemas.Logic.ManagerService">
     <Position X="1.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAYBwACAAAAAAAACAAAAAAQAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Logic\ManagerService.cs</FileName>
     </TypeIdentifier>
   </Class>
