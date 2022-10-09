@@ -10,7 +10,7 @@ namespace CinnamonCinemas.Model
 {
     public class Cinema
     {
-        private readonly string _cinemaName = "Cinnamon Cinemas";
+        private readonly string _cinemaName = "Cinnamon Cinemas Movie Theatre";
         private readonly string[] _seats = { "A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5", "C1", "C2", "C3", "C4", "C5" };
         private List<Showtime> _showTimeList;
         /// <summary>
@@ -52,6 +52,33 @@ namespace CinnamonCinemas.Model
         public int SeatsNumber
         {
             get => this._seats.Length;
+        }
+        /// <summary>
+        /// Return a list of all movies
+        /// </summary>
+        /// <returns></returns>
+        public List<string> AllMovie()
+        {
+            List<string> allMovies = new List<string>();
+            foreach (Showtime showTime in this._showTimeList)
+            {
+                allMovies.Add(showTime.Movie);
+            }
+            return allMovies;
+        }
+        /// <summary>
+        /// Return a string to rapresents all the show times
+        /// </summary>
+        /// <returns></returns>
+        public string ShowTimeListToString()
+        {
+            string showTimeListToString = "";
+
+            foreach (Showtime showTime in ShowTimeList)
+            {
+                showTimeListToString += $"{showTime.ToString()}\n";
+            }
+            return showTimeListToString;
         }
     }
 }
