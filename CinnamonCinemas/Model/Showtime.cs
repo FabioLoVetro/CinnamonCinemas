@@ -35,5 +35,31 @@ namespace CinnamonCinemas.Model
             get => this._movie;
             set => this._movie = value;
         }
+
+        /// <summary>
+        /// Rapresents the show time as a string
+        /// </summary>
+        /// <returns></returns>
+        override
+        public string ToString()
+        {
+            string showTimeMovie = $"{this._movie}";
+            string showTimeDateTime = "";
+            string date = "";
+            
+            foreach (DateTime dateTime in this._dates)
+            {
+                if (date != dateTime.ToString("yyyy-MM-dd"))
+                {
+                    date = dateTime.ToString("yyyy-MM-dd");
+                    showTimeDateTime += $"\n{date}\n - {dateTime.ToString("HH:mm")}";
+                }
+                else
+                {
+                    showTimeDateTime += $" - {dateTime.ToString("HH:mm")}";
+                }
+            }
+            return showTimeMovie + showTimeDateTime;
+        }
     }
 }
