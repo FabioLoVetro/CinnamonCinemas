@@ -13,8 +13,7 @@ namespace CinnamonCinemas.Test
         {
             ticket = new Ticket();
             ticket.Movie = "Matrix";
-            ticket.Date = new DateOnly(2022,10,20);
-            ticket.Time = new TimeOnly(15,00);
+            ticket.DateTime = new DateTime(2022,10,20,15,00,00);
             ticket.Seat = "B4";
         }
 
@@ -27,13 +26,7 @@ namespace CinnamonCinemas.Test
         [Test]
         public void DateTest()
         {
-            ticket.Date.ToString().Should().Be("20/10/2022");
-        }
-
-        [Test]
-        public void TimeTest()
-        {
-            ticket.Time.ToString().Should().Be("15:00");
+            ticket.DateTime.ToString().Should().Be("20/10/2022 15:00:00");
         }
 
         [Test]
