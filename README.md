@@ -101,3 +101,4 @@ The class is made to allow the program run...
 All inputs are supposed to be correct, (there are no input tests).
 In the future, a graphical interface could be added to guide the user in purchasing tickets.
 Tests are focused on main methods, methods like ToString () may not have tests.
+At the moment there is no database for data persistence, but could be added in future!
